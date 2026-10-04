@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1f5c57"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon-192.png">
+<title>Verse Reflections</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f1ea;--card:#fbfaf6;--ink:#1d2b2a;--mute:#5d6b69;--line:#d6d9d2;--accent:#1f5c57;--accent-ink:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a19;--card:#172423;--ink:#e6ece9;--mute:#97a8a4;--line:#2a3b39;--accent:#6fc2b8;--accent-ink:#0b1514}}
+:root[data-theme="dark"]{--bg:#101a19;--card:#172423;--ink:#e6ece9;--mute:#97a8a4;--line:#2a3b39;--accent:#6fc2b8;--accent-ink:#0b1514}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Newsreader',Georgia,'Noto Nastaliq Urdu',serif;font-size:18px;line-height:1.6}
+main{max-width:680px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:2rem;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--mute);margin:0 0 26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:18px}
+label{display:block;font-size:.95rem;color:var(--mute);margin:14px 0 4px}
+label small{display:block;font-size:.85rem;opacity:.85}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 11px}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+textarea{resize:vertical;min-height:84px}
+.ar{direction:rtl;font-family:'Amiri','Traditional Arabic',serif;font-size:1.6rem;line-height:2;text-align:right}
+.row{display:flex;gap:10px}.row>div{flex:1}.row>div.n{flex:0 0 90px}
+button{font:inherit;cursor:pointer;border-radius:6px;padding:9px 16px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
+button.ghost{background:transparent;color:var(--accent)}
+.actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+h2{font-size:1.25rem;margin:30px 0 12px}
+.entry .ref{font-weight:600}
+.entry .date{color:var(--mute);font-size:.9rem}
+.entry .v{direction:rtl;font-family:'Amiri',serif;font-size:1.5rem;line-height:2;margin:8px 0}
+.entry .t{font-style:italic;color:var(--mute)}
+.entry h3{font-size:.95rem;color:var(--accent);margin:12px 0 2px}
+.entry p{margin:0;white-space:pre-wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:.85rem;padding:2px 10px;border:1px solid var(--line);border-radius:99px;color:var(--accent);background:transparent;cursor:pointer}
+a.lookup{display:inline-block;margin-top:8px;font-size:.95rem;color:var(--accent)}
+a.lookup[hidden]{display:none}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+#lang{padding:5px 14px;font-size:.95rem;flex:none}
+:root[lang="ur"] body{font-family:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq','Noto Naskh Arabic',serif;font-size:16px;line-height:2.1}
+:root[lang="ur"] h1{line-height:1.9}
+.tb{display:flex;flex-direction:column;gap:6px;align-items:stretch}
+#rtb{padding:5px 12px;font-size:.9rem}
+.hint{margin:-14px 0 18px;color:var(--mute);font-size:.9rem}
+details summary{cursor:pointer;font-weight:600}
+.kp{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:12px;direction:rtl}
+.kp button{padding:4px 0;font-family:'Amiri',serif;font-size:1.4rem;background:transparent;color:var(--ink);border-color:var(--line)}
+.art{stroke:currentColor;fill:none;stroke-width:1.2;color:var(--accent)}
+.bgart{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.07;pointer-events:none}
+main{position:relative;z-index:1}
+.band{height:84px;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:22px;background:var(--card)}
+.band svg.art{width:100%;height:100%;display:block;opacity:.9}
+.orn{display:flex;align-items:center;gap:12px;margin-top:28px;color:var(--accent)}
+.orn span{flex:1;height:1px;background:var(--line)}
+.orn svg{width:26px;height:26px;stroke-width:2}
+.orn+h2{margin-top:12px}
+.ctx{border:1px solid var(--line);border-inline-start:3px solid var(--accent);border-radius:6px;padding:10px 14px;margin-top:12px;background:var(--bg);font-size:.95rem}
+.ctx h3{margin:0 0 4px;font-size:1rem;color:var(--accent)}
+.ctx p{margin:6px 0 0}.ctx .n{color:var(--mute);font-size:.85rem}
+select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 11px}
+.empty{color:var(--mute);text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<svg class="art bgart" aria-hidden="true"><defs>
+<g id="st"><polygon points="-20,-20 20,-20 20,20 -20,20"/><polygon points="28.28,0 0,28.28 -28.28,0 0,-28.28"/></g>
+<pattern id="gp" width="80" height="80" patternUnits="userSpaceOnUse">
+<use href="#st" x="40" y="40"/><use href="#st" x="0" y="0"/><use href="#st" x="80" y="0"/><use href="#st" x="0" y="80"/><use href="#st" x="80" y="80"/>
+<circle cx="40" cy="0" r="3"/><circle cx="0" cy="40" r="3"/><circle cx="80" cy="40" r="3"/><circle cx="40" cy="80" r="3"/>
+</pattern></defs><rect width="100%" height="100%" fill="url(#gp)"/></svg>
+<main>
+<div class="band"><svg class="art" aria-hidden="true"><rect width="100%" height="100%" fill="url(#gp)"/>
+<svg x="50%" y="50%" overflow="visible"><circle r="34" style="fill:var(--card)"/><circle r="34"/><use href="#st" transform="scale(1.05)"/><circle r="5" style="fill:var(--accent)"/></svg></svg></div>
+<div class="top"><h1 id="h1">Verse Reflections</h1><div class="tb"><button class="ghost" id="lang" aria-label="Language"></button><button class="ghost" id="rtb"></button></div></div>
+<p class="sub" id="sub">Choose a verse, then spend time with its language.</p>
+
+<p class="hint" id="hint"></p>
+<div class="card" id="formCard">
+<div class="row">
+<div><label for="surah">Surah</label><input id="surah" list="sl" placeholder="Name or number" autocomplete="off"><datalist id="sl"></datalist></div>
+<div class="n"><label for="ayah">Ayah</label><input id="ayah" placeholder="3"></div>
+</div>
+<a id="qlink" class="lookup" href="#" target="_blank" rel="noopener" hidden>Open this verse on Quran.com to copy the text</a>
+<div class="ctx" id="ctx" hidden></div>
+<label for="tsel"></label><select id="tsel"></select><p class="hint" id="fst" style="margin:6px 0 0"></p>
+<label for="pz"></label><textarea id="pz" rows="2" autocomplete="off" style="min-height:52px"></textarea>
+<label for="arabic">Verse in Arabic</label>
+<textarea id="arabic" class="ar" lang="ar" rows="2"></textarea>
+<label for="trans">Translation <small>Optional. Paste from a source you trust.</small></label>
+<textarea id="trans" rows="2"></textarea>
+
+<label for="tags">Tags <small>Optional, separated by commas. Example: mercy, hope, patience</small></label>
+<input id="tags">
+<label for="words">Words and roots <small>Which words stand out? What are their roots and other uses in the Quran?</small></label>
+<textarea id="words"></textarea>
+<label for="struct">Structure and grammar <small>Word order, verb forms, what is emphasized or left unsaid.</small></label>
+<textarea id="struct"></textarea>
+<label for="image">Imagery and tone <small>Metaphors, sound, rhythm, the feeling the verse creates.</small></label>
+<textarea id="image"></textarea>
+<label for="mine">My reflection <small>What does this mean to you today?</small></label>
+<textarea id="mine"></textarea>
+
+<div class="actions">
+<button id="save">Save reflection</button>
+<button class="ghost" id="clear">Clear</button>
+</div>
+</div>
+
+<details class="card" id="fix"><summary id="fxs"></summary>
+<p class="hint" id="fxh" style="margin:10px 0"></p>
+<label id="fxl1" for="fxr"></label><input id="fxr" autocomplete="off" autocapitalize="none">
+<label id="fxl2" for="fxu"></label><input id="fxu" class="ar" inputmode="none" lang="ur">
+<div class="kp" id="kp"></div>
+<div class="actions"><button id="fxsave"></button><button class="ghost" id="fxbk">⌫</button></div>
+<div class="chips" id="cw"></div></details>
+<div class="orn" aria-hidden="true"><span></span><svg class="art" viewBox="-16 -16 32 32"><use href="#st" transform="scale(.5)"/></svg><span></span></div>
+<h2 id="h2">Past reflections</h2>
+<input id="q" type="search" placeholder="Search by surah, word, tag or note" style="margin-bottom:14px">
+<div id="list"></div>
+<div class="actions"><button class="ghost" id="exb"></button><button class="ghost" id="imb"></button><input type="file" id="imf" accept="application/json,.json" hidden></div>
+</main>
+
+<script>
+const KEY='verse-reflections-v1';
+const F=['surah','ayah','tags','arabic','trans','words','struct','image','mine'];
+let entries=[],editing=null,query='';
+const T={
+en:{title:'Verse Reflections',sub:'Choose a verse, then spend time with its language.',surah:'Surah',ayah:'Ayah',surahPh:'Name or number',
+lookup:'Open this verse on Quran.com to copy the text',arabic:'Verse in Arabic',
+trans:'Translation <small>Optional. Paste from a source you trust.</small>',
+tags:'Tags <small>Optional, separated by commas. Example: mercy, hope, patience</small>',
+words:'Words and roots <small>Which words stand out? What are their roots and other uses in the Quran?</small>',
+struct:'Structure and grammar <small>Word order, verb forms, what is emphasized or left unsaid.</small>',
+image:'Imagery and tone <small>Metaphors, sound, rhythm, the feeling the verse creates.</small>',
+mine:'My reflection <small>What does this mean to you today?</small>',
+save:'Save reflection',update:'Update reflection',clear:'Clear',past:'Past reflections',search:'Search by surah, word, tag or note',
+empty:'No reflections yet. Your first one will appear here.',nomatch:'Nothing matches that search.',
+edit:'Edit',copy:'Copy',copied:'Copied',failed:'Copy failed',del:'Delete',confirm:'Delete this reflection?',untitled:'Untitled',
+sw:'Words and roots',ss:'Structure and grammar',si:'Imagery and tone',sm:'My reflection',tg:'Tags',tsel:'Translation to fetch',fl:'Fetching verse from Quran.com…',fok:'Verse fetched from Quran.com.',ferr:'Could not fetch this verse. Check the surah and ayah numbers and your connection, or paste the verse below.',ex:'Export backup',im:'Import backup',imok:'Backup imported.',imerr:'That file could not be read.',pz:'Paste a verse from Quran.com <small>Copy the verse there, paste it here, and the Arabic and translation boxes below fill in automatically.</small>',ctxh:'Context of revelation',mkl:'Makki: revealed in Makkah, before the Hijrah (610–622 CE)',mdl:'Madani: revealed after the Hijrah (622–632 CE)',mk:'Makki',md:'Madani',ord:'Traditional revelation order: number N of 114. A lower number means revealed earlier.',nonote:'This page lists only a few well-known occasions of revelation. For this verse, check a tafsir, such as the tafsir tabs on Quran.com.',cnote:'Based on the traditional classification and the Egyptian standard order. Scholars sometimes differ, and some surahs contain verses from both periods.',fxs:'Fix a word',fxh:'Type the word in Roman letters, then tap Urdu letters to correct its spelling. It is saved for next time and also replaced in the form above.',fxl1:'Roman spelling',fxl2:'Correct Urdu spelling',fxsave:'Save word',rt:'Roman Urdu',on:'on',off:'off',hint:'Type a word in Roman Urdu, then press space to turn it into Urdu.',other:'اردو',loc:undefined},
+ur:{title:'آیات پر غور و فکر',sub:'ایک آیت منتخب کریں، پھر اس کی زبان کے ساتھ وقت گزاریں۔',surah:'سورہ',ayah:'آیت',surahPh:'نام یا نمبر',
+lookup:'متن نقل کرنے کے لیے یہ آیت Quran.com پر کھولیں',arabic:'آیت عربی میں',
+trans:'ترجمہ <small>اختیاری۔ کسی قابلِ اعتماد ذریعے سے نقل کریں۔</small>',
+tags:'ٹیگز <small>اختیاری، کاما سے الگ کریں۔ مثال: رحمت، امید، صبر</small>',
+words:'الفاظ اور مادّے <small>کون سے الفاظ نمایاں ہیں؟ ان کا مادّہ کیا ہے اور قرآن میں دوسرے مقامات پر ان کا استعمال کیسے ہوا ہے؟</small>',
+struct:'ساخت اور قواعد <small>الفاظ کی ترتیب، افعال کی صورتیں، کس بات پر زور ہے اور کیا ناگفتہ ہے۔</small>',
+image:'پیکر اور لہجہ <small>استعارے، آہنگ، اور وہ کیفیت جو آیت پیدا کرتی ہے۔</small>',
+mine:'میرا غور و فکر <small>آج یہ آیت آپ کے لیے کیا معنی رکھتی ہے؟</small>',
+save:'غور و فکر محفوظ کریں',update:'غور و فکر اپ ڈیٹ کریں',clear:'صاف کریں',past:'پچھلے غور و فکر',search:'سورہ، لفظ، ٹیگ یا نوٹ سے تلاش کریں',
+empty:'ابھی کوئی غور و فکر نہیں۔ آپ کا پہلا یہاں نظر آئے گا۔',nomatch:'تلاش سے کچھ نہیں ملا۔',
+edit:'ترمیم',copy:'نقل کریں',copied:'نقل ہو گیا',failed:'نقل نہ ہو سکا',del:'حذف کریں',confirm:'کیا یہ غور و فکر حذف کریں؟',untitled:'بے عنوان',
+sw:'الفاظ اور مادّے',ss:'ساخت اور قواعد',si:'پیکر اور لہجہ',sm:'میرا غور و فکر',tg:'ٹیگز',tsel:'ترجمہ منتخب کریں',fl:'Quran.com سے آیت لائی جا رہی ہے…',fok:'آیت Quran.com سے لے لی گئی۔',ferr:'آیت نہیں مل سکی۔ سورہ اور آیت کے نمبر اور انٹرنیٹ چیک کریں، یا نیچے آیت پیسٹ کریں۔',ex:'بیک اپ برآمد کریں',im:'بیک اپ درآمد کریں',imok:'بیک اپ درآمد ہو گیا۔',imerr:'یہ فائل پڑھی نہیں جا سکی۔',pz:'Quran.com سے آیت پیسٹ کریں <small>وہاں سے آیت کاپی کر کے یہاں پیسٹ کریں، نیچے عربی اور ترجمے کے خانے خود بھر جائیں گے۔</small>',ctxh:'نزول کا پس منظر',mkl:'مکی: ہجرت سے پہلے مکہ میں نازل ہوئی (610–622 عیسوی)',mdl:'مدنی: ہجرت کے بعد نازل ہوئی (622–632 عیسوی)',mk:'مکی',md:'مدنی',ord:'روایتی ترتیبِ نزول: 114 میں سے نمبر N۔ کم نمبر کا مطلب ہے کہ پہلے نازل ہوئی۔',nonote:'اس صفحے میں صرف چند معروف اسبابِ نزول درج ہیں۔ اس آیت کی تفصیل کے لیے کسی تفسیر کو دیکھیں، مثلاً Quran.com پر تفسیر کے ٹیب۔',cnote:'یہ روایتی درجہ بندی اور مصری معیاری ترتیب پر مبنی ہے۔ علما بعض اوقات اختلاف کرتے ہیں، اور بعض سورتوں میں دونوں ادوار کی آیات شامل ہیں۔',fxs:'لفظ درست کریں',fxh:'لفظ رومن حروف میں لکھیں، پھر اردو حروف پر ٹیپ کر کے اس کے ہجے درست کریں۔ یہ اگلی بار کے لیے محفوظ ہو جائے گا اور اوپر فارم میں بھی بدل جائے گا۔',fxl1:'رومن ہجے',fxl2:'درست اردو ہجے',fxsave:'لفظ محفوظ کریں',rt:'رومن اردو',on:'آن',off:'آف',hint:'رومن اردو میں لفظ لکھیں، پھر اسپیس دبائیں، وہ اردو میں بدل جائے گا۔',other:'English',loc:'ur-PK'}};
+let lang='en';try{lang=localStorage.getItem('verse-lang')==='ur'?'ur':'en'}catch(e){}
+const X=()=>T[lang];
+function fdate(e){const d=new Date(e.id);return isNaN(d)?e.date:d.toLocaleDateString(X().loc,{year:'numeric',month:'long',day:'numeric'})}
+function apply(){const t=X(),h=document.documentElement;h.lang=lang;h.dir=lang==='ur'?'rtl':'ltr';document.title=t.title;
+  $('h1').textContent=t.title;$('sub').textContent=t.sub;$('h2').textContent=t.past;$('lang').textContent=t.other;
+  ['surah','ayah','tsel','pz','arabic','trans','tags','words','struct','image','mine'].forEach(k=>{const l=document.querySelector('label[for="'+k+'"]');
+    if(l)l.innerHTML=t[k]||''});
+  $('surah').placeholder=t.surahPh;$('q').placeholder=t.search;$('qlink').textContent=t.lookup;$('clear').textContent=t.clear;
+  $('save').textContent=editing?t.update:t.save;
+  $('rtb').textContent=t.rt+': '+(rt?t.on:t.off);$('rtb').setAttribute('aria-pressed',rt);$('hint').hidden=!rt;$('hint').textContent=t.hint;
+  $('fxs').textContent=t.fxs;$('fxh').textContent=t.fxh;$('fxl1').textContent=t.fxl1;$('fxl2').textContent=t.fxl2;$('fxsave').textContent=t.fxsave;$('exb').textContent=t.ex;$('imb').textContent=t.im;updLink()}
+
+const SN="Al-Fatihah,Al-Baqarah,Al-Imran,An-Nisa,Al-Ma'idah,Al-An'am,Al-A'raf,Al-Anfal,At-Tawbah,Yunus,Hud,Yusuf,Ar-Ra'd,Ibrahim,Al-Hijr,An-Nahl,Al-Isra,Al-Kahf,Maryam,Ta-Ha,Al-Anbiya,Al-Hajj,Al-Mu'minun,An-Nur,Al-Furqan,Ash-Shu'ara,An-Naml,Al-Qasas,Al-Ankabut,Ar-Rum,Luqman,As-Sajdah,Al-Ahzab,Saba,Fatir,Ya-Sin,As-Saffat,Sad,Az-Zumar,Ghafir,Fussilat,Ash-Shura,Az-Zukhruf,Ad-Dukhan,Al-Jathiyah,Al-Ahqaf,Muhammad,Al-Fath,Al-Hujurat,Qaf,Adh-Dhariyat,At-Tur,An-Najm,Al-Qamar,Ar-Rahman,Al-Waqi'ah,Al-Hadid,Al-Mujadila,Al-Hashr,Al-Mumtahanah,As-Saff,Al-Jumu'ah,Al-Munafiqun,At-Taghabun,At-Talaq,At-Tahrim,Al-Mulk,Al-Qalam,Al-Haqqah,Al-Ma'arij,Nuh,Al-Jinn,Al-Muzzammil,Al-Muddaththir,Al-Qiyamah,Al-Insan,Al-Mursalat,An-Naba,An-Nazi'at,Abasa,At-Takwir,Al-Infitar,Al-Mutaffifin,Al-Inshiqaq,Al-Buruj,At-Tariq,Al-A'la,Al-Ghashiyah,Al-Fajr,Al-Balad,Ash-Shams,Al-Layl,Ad-Duha,Ash-Sharh,At-Tin,Al-Alaq,Al-Qadr,Al-Bayyinah,Az-Zalzalah,Al-Adiyat,Al-Qari'ah,At-Takathur,Al-Asr,Al-Humazah,Al-Fil,Quraysh,Al-Ma'un,Al-Kawthar,Al-Kafirun,An-Nasr,Al-Masad,Al-Ikhlas,Al-Falaq,An-Nas".split(',');
+const norm=t=>t.toLowerCase().replace(/[^a-z0-9]/g,'').replace(/^(adh|ash|al|an|ar|as|at|ad|az)(?=.{3})/,'');
+function surahNum(v){v=v.trim();if(/^\d+$/.test(v)&&+v>=1&&+v<=114)return +v;const n=norm(v);if(!n)return 0;const i=SN.findIndex(x=>norm(x)===n);return i+1}
+function updLink(){const n=surahNum($('surah').value),a=$('ayah').value.trim(),l=$('qlink');
+  if(n){$('ctx').hidden=false;$('ctx').innerHTML=ctxHTML(n,a);l.hidden=false;l.href='https://quran.com/'+n+(/^\d+$/.test(a)?'/'+a:'')}else{l.hidden=true;$('ctx').hidden=true}}
+const DS="is|iss=اس ka=کا ki=کی ke=کے ko=کو ne=نے se=سے me|mein|main=میں par|pe|per=پر hai=ہے hain|hein=ہیں tha=تھا thi=تھی the=تھے ho=ہو hota=ہوتا hoti=ہوتی hote=ہوتے hoga=ہوگا hogi=ہوگی ye|yeh=یہ wo|woh|vo=وہ yahan=یہاں wahan=وہاں matlab=مطلب aur=اور ya=یا lekin=لیکن magar=مگر kyun|kyu=کیوں kya|kiya=کیا kaise=کیسے kab=کب kahan=کہاں kaun|kon=کون jo=جو jab=جب tab=تب agar=اگر to=تو bhi=بھی hi=ہی nahi|nahin=نہیں na=نہ sab=سب kuch=کچھ koi=کوئی har=ہر bohat|bohot|bahut=بہت zyada=زیادہ kam=کم acha|accha=اچھا bura=برا mera=میرا meri=میری mere=میرے tera=تیرا teri=تیری apna=اپنا apni=اپنی apne=اپنے hum=ہم tum=تم aap=آپ mujhe=مجھے mujh=مجھ humein|hamein=ہمیں un|in=ان unka|inka=ان کا unki|inki=ان کی allah=اللہ quran=قرآن ayat|ayah=آیت surah|sura=سورہ dua=دعا iman=ایمان sabr=صبر rehmat|rahmat=رحمت umeed|ummeed=امید dil=دل zindagi=زندگی duniya=دنیا akhirat=آخرت insaan|insan=انسان ilm=علم hidayat=ہدایت shukr=شکر taqwa=تقویٰ nabi=نبی rasool=رسول lafz=لفظ alfaz=الفاظ maani|mani=معنی tarjuma=ترجمہ ghaur=غور fikr=فکر soch=سوچ sochna=سوچنا samajh=سمجھ samajhna=سمجھنا dekhna=دیکھنا kehna=کہنا kehta=کہتا keh=کہ kar=کر karna=کرنا karta=کرتا karte=کرتے hua=ہوا hui=ہوئی gaya=گیا gayi|gai=گئی aaya=آیا rab=رب banda=بندہ bande=بندے log=لوگ waqt=وقت din=دن raat=رات ab=اب phir=پھر abhi=ابھی sirf=صرف wala=والا wali=والی wale=والے ek=ایک do=دو teen=تین pehle=پہلے baad=بعد saath=ساتھ liye=لیے liya=لیا bataya=بتایا farmaya=فرمایا zaban=زبان kalam=کلام bayan=بیان tashbeeh=تشبیہ istiara=استعارہ sabaq=سبق ibrat=عبرت yaad=یاد yaqeen=یقین khauf=خوف dar=ڈر khushi=خوشی gham=غم sukoon=سکون rasta|raasta=راستہ roshni=روشنی andhera=اندھیرا haq=حق sach=سچ jhoot=جھوٹ ummat=امت kitab=کتاب mohabbat=محبت jawab=جواب subah|subha=صبح insaaf=انصاف khoobsurat|khubsurat=خوبصورت pyaar|pyar=پیار dosti=دوستی zaroor=ضرور shayad=شاید hamesha=ہمیشہ kabhi=کبھی kyunke=کیونکہ isliye=اس لیے jahan=جہاں jis=جس uska|iska=اس کا uski|iski=اس کی usne|isne=اس نے tumhe=تمہیں unhein=انہیں kisi=کسی zameen=زمین aasman=آسمان paani=پانی nafs=نفس qalb=قلب nafrat=نفرت ishq=عشق namaz=نماز roza=روزہ jannat=جنت jahannum=جہنم gunah=گناہ tauba=توبہ maghfirat=مغفرت";
+const D={};DS.split(' ').forEach(p=>{const[k,v]=p.split('=');k.split('|').forEach(x=>D[x]=v)});
+const DG={bh:'بھ',ph:'پھ',jh:'جھ',dh:'دھ',kh:'خ',gh:'غ',ch:'چ',sh:'ش',zh:'ژ',th:'تھ',rh:'ڑھ'};
+const SG={b:'ب',p:'پ',t:'ت',j:'ج',d:'د',r:'ر',z:'ز',s:'س',f:'ف',q:'ق',k:'ک',g:'گ',l:'ل',m:'م',n:'ن',w:'و',v:'و',h:'ہ',y:'ی',x:'کس',c:'ک'};
+const V1={aa:'آ',ai:'اے',au:'او',ee:'ای',ii:'ای',oo:'او',uu:'او',a:'ا',e:'ا',i:'ا',o:'او',u:'ا'};
+const VM={aa:'ا',ai:'ے',au:'او',ee:'ی',ii:'ی',oo:'و',uu:'و',ia:'یا',ua:'وا',a:'',e:'',i:'',o:'و',u:''};
+const VE={a:'ا',e:'ے',i:'ی',o:'و',u:'و'};
+function vow(g,first,end){let o='',p=0;
+  while(p<g.length){const t=(first&&p===0)?V1:VM;let k=g.substr(p,2);if(!(k in t)||k.length<2)k=g[p];
+    const last=p+k.length>=g.length;o+=(end&&last&&k.length===1&&!(first&&p===0)&&VE[k])||t[k]||'';p+=k.length}
+  return o}
+function fb(w){const l=w.toLowerCase();let o='',i=0;
+  while(i<l.length){const c=l[i];
+    if('aeiou'.includes(c)){let j=i;while(j<l.length&&'aeiou'.includes(l[j]))j++;o+=vow(l.slice(i,j),i===0,j>=l.length);i=j;continue}
+    if(i>0&&'TDRN'.includes(w[i])){const u=w[i];
+      if(u==='T'){if(l[i+1]==='h'){o+='ٹھ';i+=2}else{o+='ٹ';i++}}
+      else if(u==='D'){if(l[i+1]==='h'){o+='ڈھ';i+=2}else{o+='ڈ';i++}}
+      else if(u==='R'){o+='ڑ';i++}else{o+='ں';i++}continue}
+    const two=l.substr(i,2);if(DG[two]){o+=DG[two];i+=2;continue}
+    o+=SG[c]||'';i++;while(i<l.length&&l[i]===c)i++}
+  return o}
+function conv(t){return t.replace(/[A-Za-z]+/g,w=>CW[w.toLowerCase()]||D[w.toLowerCase()]||fb(w))}
+
+
+const MD=new Set([2,3,4,5,8,9,13,22,24,33,47,48,49,55,57,58,59,60,61,62,63,64,65,66,76,98,99,110]);
+const OR=[96,68,73,74,1,111,81,87,92,89,93,94,103,100,108,102,107,109,105,113,114,112,53,80,97,91,85,95,106,101,75,104,77,50,90,86,54,38,7,72,36,25,35,19,20,56,26,27,28,17,10,11,12,15,6,37,31,34,39,40,41,42,43,44,45,46,51,88,18,16,71,14,21,23,32,52,67,69,70,78,79,82,84,30,29,83,2,8,3,33,60,4,99,57,47,13,55,76,65,98,59,24,22,63,58,49,66,64,61,62,48,5,9,110];
+const RK={};OR.forEach((n,i)=>{if(!RK[n])RK[n]=i+1});
+const OC=[
+[96,1,5,'Traditionally the first verses revealed: to the Prophet ﷺ in the Cave of Hira near Makkah, around 610 CE, in the month of Ramadan.','روایات کے مطابق یہ سب سے پہلے نازل ہونے والی آیات ہیں، جو مکہ کے قریب غارِ حرا میں تقریباً 610 عیسوی میں رمضان کے مہینے میں نبی ﷺ پر نازل ہوئیں۔'],
+[93,1,999,'Revealed after a pause in revelation, when the Prophet ﷺ was distressed and opponents mocked him. It reassures him that his Lord had not abandoned him.','وحی میں وقفے کے بعد نازل ہوئی، جب نبی ﷺ رنجیدہ تھے اور مخالفین طعنے دے رہے تھے۔ اس میں تسلی ہے کہ آپ ﷺ کے رب نے آپ کو نہیں چھوڑا۔'],
+[108,1,999,'Revealed to console the Prophet ﷺ after some Makkan opponents taunted him as cut off from posterity. It promises him abundant good.','یہ نبی ﷺ کی تسلی کے لیے نازل ہوئی جب مکہ کے بعض مخالفین نے آپ کو بے نسل ہونے کا طعنہ دیا۔ اس میں آپ ﷺ کو خیرِ کثیر کی بشارت ہے۔'],
+[111,1,999,'Reported to have been revealed after Abu Lahab rebuked the Prophet ﷺ when he called the Quraysh to Mount Safa to warn them (Sahih al-Bukhari).','روایت ہے کہ یہ اس وقت نازل ہوئی جب نبی ﷺ نے قریش کو کوہِ صفا پر خبردار کرنے کے لیے بلایا اور ابو لہب نے آپ ﷺ کو جھڑکا (صحیح بخاری)۔'],
+[112,1,999,'Reported to answer questions put to the Prophet ﷺ by opponents who asked him to describe his Lord. It declares God\'s oneness.','روایت ہے کہ یہ ان سوالات کے جواب میں نازل ہوئی جو مخالفین نے نبی ﷺ سے ان کے رب کے بارے میں کیے۔ اس میں اللہ کی وحدانیت کا اعلان ہے۔'],
+[80,1,10,'Reported to concern Abdullah ibn Umm Maktum, a blind Companion who came seeking guidance while the Prophet ﷺ was speaking with Makkan leaders. The verses gently correct the Prophet\'s ﷺ turning away from him (Tirmidhi).','روایت ہے کہ یہ نابینا صحابی عبداللہ بن ام مکتوم کے بارے میں ہیں جو اس وقت ہدایت کے لیے آئے جب نبی ﷺ مکہ کے سرداروں سے گفتگو کر رہے تھے۔ ان آیات میں نرمی سے رخ پھیرنے پر تنبیہ ہے (ترمذی)۔'],
+[2,142,150,'Revealed in Madinah when the direction of prayer changed from Jerusalem to the Kaaba, traditionally in the second year after the Hijrah.','مدینہ میں اس وقت نازل ہوئیں جب نماز کا رخ بیت المقدس سے کعبہ کی طرف بدلا، روایتی طور پر ہجرت کے دوسرے سال۔'],
+[2,183,185,'Fasting in Ramadan was prescribed in Madinah, traditionally in the second year after the Hijrah.','رمضان کے روزے مدینہ میں فرض ہوئے، روایتی طور پر ہجرت کے دوسرے سال۔'],
+[5,3,3,'The part about the religion being perfected is reported to have been revealed at Arafat during the Farewell Pilgrimage, in 10 AH.','دین کے مکمل ہونے والا حصہ روایات کے مطابق حجۃ الوداع کے موقع پر عرفات میں 10 ہجری میں نازل ہوا۔'],
+[24,11,20,'These verses concern the slander against Aisha رضي الله عنها after the expedition of Banu al-Mustaliq, and affirm her innocence.','یہ آیات غزوہ بنی المصطلق کے بعد حضرت عائشہ رضی اللہ عنہا پر لگائی گئی تہمت کے بارے میں ہیں اور ان کی براءت کا اعلان کرتی ہیں۔'],
+[58,1,4,'Revealed about Khawla bint Tha\'laba, who complained to the Prophet ﷺ about her husband\'s pronouncement of zihar. The verses set out the ruling and its expiation.','یہ خولہ بنت ثعلبہ کے بارے میں نازل ہوئیں جنہوں نے اپنے شوہر کے ظہار کی شکایت نبی ﷺ سے کی۔ ان میں حکم اور اس کا کفارہ بیان ہوا۔'],
+[48,1,999,'Revealed around the time of the Treaty of Hudaybiyyah (6 AH), which it describes as a clear victory.','صلحِ حدیبیہ (6 ہجری) کے موقع پر نازل ہوئی، جسے اس میں کھلی فتح کہا گیا ہے۔'],
+[3,121,179,'Much of this section concerns the Battle of Uhud (3 AH) and its lessons.','اس حصے کا بڑا حصہ غزوہ احد (3 ہجری) اور اس کے اسباق سے متعلق ہے۔'],
+[105,1,999,'Refers to the Year of the Elephant, when Abraha\'s army marched on the Kaaba, traditionally the year the Prophet ﷺ was born.','عام الفیل کا ذکر ہے جب ابرہہ کا لشکر کعبہ پر چڑھ آیا، روایتی طور پر یہی نبی ﷺ کی ولادت کا سال ہے۔'],
+[110,1,999,'Revealed late in the Prophet\'s ﷺ life, around the conquest of Makkah.','نبی ﷺ کی زندگی کے آخری دور میں، فتحِ مکہ کے قریب نازل ہوئی۔']];
+function ctxHTML(sn,a){const t=X(),an=/^\d+$/.test(a)?+a:0;
+  const m=OC.filter(o=>o[0]===sn&&(!an||(an>=o[1]&&an<=o[2])));
+  return `<h3>${t.ctxh}</h3><strong>${MD.has(sn)?t.mdl:t.mkl}</strong><p>${t.ord.replace('N',RK[sn])}</p>`
+   +(m.length?m.map(o=>`<p>${an||o[2]>998?'':(o[1]===o[2]?o[1]:o[1]+'–'+o[2])+': '}${esc(lang==='ur'?o[4]:o[3])}</p>`).join(''):`<p>${t.nonote}</p>`)
+   +`<p class="n">${t.cnote}</p>`}
+let CW={};try{CW=JSON.parse(localStorage.getItem('verse-words')||'{}')}catch(e){}
+const KP='ا آ ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ہ ھ ء ی ے ئ ؤ ّ'.split(' ');
+const RT=['trans','tags','words','struct','image','mine','q'];
+let rt=true;try{rt=localStorage.getItem('verse-rt')!=='0'}catch(e){}
+function rtHandler(el){
+  if(!rt)return;const pos=el.selectionStart,v=el.value,ch=v[pos-1];
+  if(!ch||!/[\s.,?!;:]/.test(ch))return;
+  const before=v.slice(0,pos-1),m=before.match(/[A-Za-z]+$/);
+  if(!m&&!/[\u0600-\u06FF]$/.test(before))return;
+  const pre=m?before.slice(0,before.length-m[0].length):before,w=m?conv(m[0]):'';
+  const pm={'?':'؟',',':'،',';':'؛','.':'۔'},n=(!el.dataset.keep&&pm[ch])||ch;
+  el.value=pre+w+n+v.slice(pos);const np=(pre+w+n).length;el.setSelectionRange(np,np)}
+function flush(el){if(!rt)return;const m=el.value.match(/[A-Za-z]+$/);if(m)el.value=el.value.slice(0,-m[0].length)+conv(m[0])}
+function load(){try{entries=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){entries=[]}}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(entries))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function $(id){return document.getElementById(id)}
+function clearForm(){F.forEach(f=>$(f).value='');editing=null;updLink();$('save').textContent=X().save}
+function save(){
+  RT.slice(0,-1).forEach(id=>flush($(id)));
+  const d={};F.forEach(f=>d[f]=$(f).value.trim());
+  if(!d.surah&&!d.arabic&&!d.mine){$('surah').focus();return}
+  if(editing){const i=entries.findIndex(e=>e.id===editing);if(i>-1)entries[i]={...entries[i],...d}}
+  else entries.unshift({id:Date.now(),date:new Date().toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}),...d});
+  persist();clearForm();render();
+}
+function sec(t,v){return v?`<h3>${t}</h3><p dir="auto">${esc(v)}</p>`:''}
+function render(){
+  const el=$('list');
+  const qq=query.toLowerCase();
+  const shown=entries.filter(e=>!qq||F.some(f=>(e[f]||'').toLowerCase().includes(qq)));
+  if(entries.length&&!shown.length){el.innerHTML='<div class="card empty">'+esc(X().nomatch)+'</div>';return}
+  if(!entries.length){el.innerHTML='<div class="card empty">'+esc(X().empty)+'</div>';return}
+  el.innerHTML=shown.map(e=>`<div class="card entry">
+    <div class="ref">${esc(e.surah||X().untitled)}${e.ayah?' : '+esc(e.ayah):''}</div>
+    <div class="date">${esc(fdate(e))}</div>
+    ${(n=>n?`<div class="date">${X()[MD.has(n)?'md':'mk']} #${RK[n]}</div>`:'')(surahNum(e.surah||''))}
+    ${e.arabic?`<div class="v" lang="ar">${esc(e.arabic)}</div>`:''}
+    ${e.trans?`<div class="t" dir="auto">${esc(e.trans)}</div>`:''}
+    ${e.tags?`<div class="chips">${e.tags.split(/[,،]/).map(t=>t.trim()).filter(Boolean).map(t=>`<button class="chip" data-a="tag" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div>`:''}
+    ${sec(X().sw,e.words)}${sec(X().ss,e.struct)}${sec(X().si,e.image)}${sec(X().sm,e.mine)}
+    <div class="actions">
+      <button class="ghost" data-a="edit" data-id="${e.id}">${X().edit}</button>
+      <button class="ghost" data-a="copy" data-id="${e.id}">${X().copy}</button>
+      <button class="ghost" data-a="del" data-id="${e.id}">${X().del}</button>
+    </div></div>`).join('');
+}
+$('list').addEventListener('click',ev=>{
+  const b=ev.target.closest('button');if(!b)return;
+  if(b.dataset.a==='tag'){$('q').value=query=b.dataset.t;render();return}
+  const id=+b.dataset.id,e=entries.find(x=>x.id===id);if(!e)return;
+  if(b.dataset.a==='del'){if(confirm(X().confirm)){entries=entries.filter(x=>x.id!==id);persist();render()}}
+  if(b.dataset.a==='edit'){F.forEach(f=>$(f).value=e[f]||'');editing=id;updLink();$('save').textContent=X().update;$('formCard').scrollIntoView({behavior:'smooth'})}
+  if(b.dataset.a==='copy'){
+    const t=[`${e.surah} : ${e.ayah}`,e.tags&&X().tg+': '+e.tags,e.arabic,e.trans,e.words&&X().sw+': '+e.words,e.struct&&X().ss+': '+e.struct,e.image&&X().si+': '+e.image,e.mine&&X().sm+': '+e.mine].filter(Boolean).join('\n\n');
+    try{navigator.clipboard.writeText(t);b.textContent=X().copied}catch(x){b.textContent=X().failed}
+    setTimeout(()=>b.textContent=X().copy,1500);
+  }
+});
+$('sl').innerHTML=SN.map((n,i)=>`<option value="${n}">${i+1}</option>`).join('');
+$('surah').oninput=$('ayah').oninput=()=>{updLink();sched()};
+$('q').oninput=e=>{rtHandler(e.target);query=e.target.value.trim();render()};
+$('save').onclick=save;$('clear').onclick=clearForm;
+$('lang').onclick=()=>{lang=lang==='en'?'ur':'en';try{localStorage.setItem('verse-lang',lang)}catch(e){}apply();render()};
+RT.forEach(id=>{const el=$(id);el.dir='auto';if(id!=='q')el.addEventListener('input',()=>rtHandler(el));el.addEventListener('blur',()=>{flush(el);if(id==='q'){query=el.value.trim();render()}})});
+$('tags').dataset.keep='1';
+$('pz').addEventListener('paste',()=>setTimeout(()=>{
+  const ar=l=>(l.match(/[\u0600-\u06FF]/g)||[]).length>l.length*.5;
+  const L=$('pz').value.split(/\n+/).map(x=>x.trim()).filter(Boolean),A=L.filter(ar).join(' '),T=L.filter(l=>!ar(l)).join(' ');
+  if(A)$('arabic').value=A;if(T)$('trans').value=T;$('pz').value=''},0));
+$('kp').innerHTML=KP.map(k=>`<button type="button">${k}</button>`).join('');
+$('kp').onclick=e=>{const b=e.target.closest('button');if(b)$('fxu').value+=b.textContent};
+$('fxbk').onclick=()=>{$('fxu').value=$('fxu').value.slice(0,-1)};
+$('fxr').oninput=()=>{$('fxu').value=conv($('fxr').value.trim())};
+function renderCW(){$('cw').innerHTML=Object.keys(CW).map(k=>`<button class="chip" data-w="${esc(k)}">${esc(k)} = ${esc(CW[k])} ×</button>`).join('')}
+$('cw').onclick=e=>{const b=e.target.closest('button');if(!b)return;delete CW[b.dataset.w];try{localStorage.setItem('verse-words',JSON.stringify(CW))}catch(x){}renderCW()};
+$('fxsave').onclick=()=>{const w=$('fxr').value.trim().toLowerCase(),u=$('fxu').value.trim();
+  if(!/^[a-z]+$/.test(w)||!u){$('fxr').focus();return}
+  const old=conv(w);CW[w]=u;try{localStorage.setItem('verse-words',JSON.stringify(CW))}catch(x){}
+  if(old&&old!==u){const re=new RegExp('(?<![\\u0600-\\u06FF])'+old+'(?![\\u0600-\\u06FF])','g');
+    RT.slice(0,-1).forEach(id=>{const el=$(id);el.value=el.value.replace(re,u)})}
+  $('fxr').value=$('fxu').value='';renderCW()};
+renderCW();
+const BASES=['https://api.quran.com/api/v4','https://api.islamic.app/v1'];
+async function api(path){let err;for(const b of BASES){try{const r=await fetch(b+path);if(r.ok)return await r.json();err=r.status}catch(e){err=e}}throw err}
+let fT=0,ft;
+function setSt(k){$('fst').textContent=k?X()[k]:''}
+function sched(){clearTimeout(ft);ft=setTimeout(fetchVerse,600)}
+async function fetchVerse(){
+  const n=surahNum($('surah').value),a=$('ayah').value.trim();
+  if(!n||!/^\d+$/.test(a)||editing){setSt('');return}
+  const id=++fT;setSt('fl');
+  try{const j=await api('/verses/by_key/'+n+':'+a+'?translations='+($('tsel').value||131)+'&fields=text_uthmani');
+    if(id!==fT)return;const v=j.verse||j;
+    $('arabic').value=v.text_uthmani||'';
+    const tr=(v.translations&&v.translations[0]&&v.translations[0].text)||'';
+    $('trans').value=tr.replace(/<sup[\s\S]*?<\/sup>/g,'').replace(/<[^>]+>/g,'').trim();
+    setSt('fok')}catch(e){if(id===fT)setSt('ferr')}}
+async function loadTr(){
+  try{const j=await api('/resources/translations');
+    const L=(j.translations||[]).filter(x=>/^(english|urdu)$/i.test(x.language_name||''));
+    const g=l=>L.filter(x=>x.language_name.toLowerCase()===l).map(x=>'<option value="'+x.id+'">'+esc(x.author_name||x.name)+'</option>').join('');
+    $('tsel').innerHTML='<optgroup label="English">'+g('english')+'</optgroup><optgroup label="اردو">'+g('urdu')+'</optgroup>';
+    let sv='';try{sv=localStorage.getItem('verse-tid')||''}catch(e){}
+    const d=sv||'131';if([...$('tsel').options].some(o=>o.value===d))$('tsel').value=d}
+  catch(e){$('tsel').innerHTML='<option value="131">Mustafa Khattab, The Clear Quran</option>'}}
+$('tsel').onchange=()=>{try{localStorage.setItem('verse-tid',$('tsel').value)}catch(e){}fetchVerse()};
+loadTr();
+$('exb').onclick=()=>{const b=new Blob([JSON.stringify({v:1,entries,words:CW})],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download='verse-reflections-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+$('imb').onclick=()=>$('imf').click();
+$('imf').onchange=async()=>{const f=$('imf').files[0];if(!f)return;
+  try{const d=JSON.parse(await f.text());
+    if(!Array.isArray(d.entries))throw 0;
+    const have=new Set(entries.map(e=>e.id));
+    d.entries.filter(e=>e&&e.id&&!have.has(e.id)).forEach(e=>entries.push(e));
+    entries.sort((x,y)=>y.id-x.id);
+    Object.assign(CW,d.words||{});try{localStorage.setItem('verse-words',JSON.stringify(CW))}catch(e){}
+    persist();render();renderCW();alert(X().imok)}catch(e){alert(X().imerr)}
+  $('imf').value=''};
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
+
+$('rtb').onclick=()=>{rt=!rt;try{localStorage.setItem('verse-rt',rt?'1':'0')}catch(e){}apply()};
+load();apply();render();
+</script>
+</body>
+</html>
